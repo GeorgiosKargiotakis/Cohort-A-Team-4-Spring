@@ -26,7 +26,7 @@ public class TvShowController extends AbstractController<TvShow> {
     }
 
     @GetMapping(params = {"seasons"})
-    public ResponseEntity<ApiResponse<TvShow>> findBySeasons(@RequestParam Integer seasons) {
-        return ResponseEntity.ok(ApiResponse.<TvShow>builder().data(tvShowService.findBySeasons(seasons)).build());
+    public ResponseEntity<ApiResponse<List<TvShow>>> findBySeasons(@RequestParam Integer seasons) {
+        return ResponseEntity.ok(ApiResponse.<List<TvShow>>builder().data(tvShowService.findBySeasons(seasons)).build());
     }
 }

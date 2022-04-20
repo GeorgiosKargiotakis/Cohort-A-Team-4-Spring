@@ -56,6 +56,14 @@ public class SampleContentCreator extends BaseComponent implements CommandLineRu
 
         tvShowService.createAll(firstTvShow, secondTvShow, thirdTvShow);
 
-        actorService.assign(firstActor, firstTvShow, BigDecimal.valueOf(2001L));
+        actorService.assign(secondActor, secondFilm, BigDecimal.valueOf(48001L));
+        directorService.assign(secondDirector, secondFilm, BigDecimal.valueOf(1000L));
+        producerService.assign(secondProducer, thirdFilm, BigDecimal.valueOf(25820L));
+        actorService.assign(thirdActor, thirdFilm, BigDecimal.valueOf(50485L));
+        directorService.assign(thirdDirector, secondTvShow, BigDecimal.valueOf(3500L));
+        producerService.assign(thirdProducer, firstTvShow, BigDecimal.valueOf(42458L));
+        actorService.assign(firstActor, firstFilm, BigDecimal.valueOf(30521L));
+        directorService.assign(secondDirector, firstTvShow, BigDecimal.valueOf(78412L));
+        producerService.assign(thirdProducer, firstFilm, BigDecimal.valueOf(65321L));
     }
 }

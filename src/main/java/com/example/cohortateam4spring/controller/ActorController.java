@@ -36,8 +36,8 @@ public class ActorController extends AbstractController<Actor> {
 //    }
 
     @GetMapping(params = {"awards"})
-    public ResponseEntity<ApiResponse<Actor>> findByAwards(@RequestParam String awards) {
-        return new ResponseEntity<>(ApiResponse.<Actor>builder().data(actorService.findByAwards(awards)).build(),
+    public ResponseEntity<ApiResponse<List<Actor>>> findByAwards(@RequestParam String awards) {
+        return new ResponseEntity<>(ApiResponse.<List<Actor>>builder().data(actorService.findByAwards(awards)).build(),
                 HttpStatus.OK);
     }
 

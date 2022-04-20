@@ -1,5 +1,7 @@
 package com.example.cohortateam4spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -14,6 +16,7 @@ import java.math.BigDecimal;
 @Table(name = "ACTIVITIES")
 public class Activity {
     @EmbeddedId
+    @JsonIgnore
     private ActivityKey key;
 
     @ManyToOne
@@ -22,6 +25,7 @@ public class Activity {
 
 
     @ManyToOne
+    @JsonIgnoreProperties({"programId"})
     @MapsId("programId")
     private Program program;
 

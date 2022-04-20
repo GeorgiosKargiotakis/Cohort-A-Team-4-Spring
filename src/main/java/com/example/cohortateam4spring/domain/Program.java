@@ -1,6 +1,7 @@
 package com.example.cohortateam4spring.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,7 +37,7 @@ public class Program extends BaseModel {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonIgnore
+    @JsonIgnoreProperties({"program"})
     @OneToMany(mappedBy = "program", fetch = FetchType.EAGER)
     private Set<Activity> activities = new HashSet<>();
 

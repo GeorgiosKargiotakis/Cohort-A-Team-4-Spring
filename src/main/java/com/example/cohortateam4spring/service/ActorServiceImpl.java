@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +27,7 @@ public class ActorServiceImpl extends BaseServiceImpl<Actor> implements ActorSer
     }
 
     @Override
-    public Actor findByAwards(final String awards) {
+    public List<Actor> findByAwards(final String awards) {
         return actorRepository.findByAwards(awards);
     }
 
