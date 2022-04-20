@@ -6,6 +6,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,20 +15,22 @@ import java.util.Set;
 @Data
 @SuperBuilder
 @NoArgsConstructor
+@Entity
+@Table(name = "PEOPLE")
+@SequenceGenerator(name = "idGenerator", sequenceName = "PEOPLE_SEQ", initialValue = 1, allocationSize = 1)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Person extends BaseModel {
 
-    @NotNull
+    @Column(length = 200)
+    private Integer age;
     @Column(length = 200, nullable = false)
     private String name;
 
-    private Integer age;
 
-    @NotNull
-    @OneToMany(mappedBy = "")
-    private Set<Film> films;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "person")
+    private Set<Activity> activities = new HashSet<>();
 
-    @NotNull
-    @OneToMany(mappedBy = "")
-    private Set<TvShow> tvShows;
 
 }

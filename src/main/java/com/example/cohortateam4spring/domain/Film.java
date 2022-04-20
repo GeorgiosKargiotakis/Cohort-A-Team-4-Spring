@@ -30,9 +30,4 @@ public class Film extends Program {
     @Column(length = 10000, nullable = false)
     private String plotSummary;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "film")
-    private Set<Activity> activities = new HashSet<>();
-
 }

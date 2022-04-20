@@ -17,41 +17,40 @@ public class Activity {
     private ActivityKey key;
 
     @ManyToOne
-    @MapsId("actorId")
-    private Actor actor;
+    @MapsId("personId")
+    private Person person;
+
 
     @ManyToOne
-    @MapsId("producerId")
-    private Producer producer;
+    @MapsId("programId")
+    private Program program;
 
-    @ManyToOne
-    @MapsId("directorId")
-    private Director director;
-
-    @ManyToOne
-    @MapsId("filmId")
-    private Film film;
-
-    @ManyToOne
-    @MapsId("tvShowId")
-    private TvShow tvShow;
 
     @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal budget;
 
-    public Activity(final ActivityKey key,
-                    final Actor actor,
-                    final Producer producer,
-                    final Director director,
-                    final Film film,
-                    final TvShow tvShow,
+    public Activity(final Actor actor,
+                    final Program program,
                     final BigDecimal budget) {
-        this.key = key;
-        this.actor = actor;
-        this.producer = producer;
-        this.director = director;
-        this.film = film;
-        this.tvShow = tvShow;
+        this.person = actor;
+        this.program = program;
         this.budget = budget;
     }
+    public Activity(final Producer producer,
+                    final Program program,
+                    final BigDecimal budget) {
+        this.person = producer;
+        this.program = program;
+        this.budget = budget;
+    }
+
+    public Activity(final Director director,
+                    final Program program,
+                    final BigDecimal budget) {
+        this.person = director;
+        this.program = program;
+        this.budget = budget;
+    }
+
+
 }

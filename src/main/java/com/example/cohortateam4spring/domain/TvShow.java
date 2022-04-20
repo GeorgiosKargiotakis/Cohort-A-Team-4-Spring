@@ -30,9 +30,5 @@ public class TvShow extends Program {
     @Column(length = 100, nullable = false)
     private Integer episodes;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "actor")
-    private Set<Activity> activities = new HashSet<>();
 
 }

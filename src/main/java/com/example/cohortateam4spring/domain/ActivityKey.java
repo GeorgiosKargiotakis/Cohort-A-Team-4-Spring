@@ -12,10 +12,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Embeddable
 public class ActivityKey implements Serializable {
-    private Long tvShowId;
-    private Long filmId;
-    private Long actorId;
-    private Long producerId;
-    private Long directorId;
+    private Long programId;
     private Long personId;
 }

@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ActorRepository extends JpaRepository<Actor, Long> {
+
+
+    Actor findByAwards(String awards);
 }

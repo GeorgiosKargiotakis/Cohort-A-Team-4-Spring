@@ -21,13 +21,8 @@ import java.util.Set;
 @SequenceGenerator(name = "idGenerator", sequenceName = "ACTOR_SEQ", initialValue = 1, allocationSize = 1)
 public class Actor extends Person{
 
-    @NotNull
     @Column(length = 200, nullable = false)
     private String awards;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "actor")
-    private Set<Activity> activities = new HashSet<>();
 
 }

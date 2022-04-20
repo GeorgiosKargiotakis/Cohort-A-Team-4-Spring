@@ -21,12 +21,10 @@ import java.util.Set;
 @SequenceGenerator(name = "idGenerator", sequenceName = "PRODUCER_SEQ", initialValue = 1, allocationSize = 1)
 public class Producer extends Person{
 
+    private Integer numberOfCast;
+
     @NotNull
-    @Column(length = 200, nullable = false)
+    @Column(length = 200)
     private String producerDifferent;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "producer")
-    private Set<Activity> activities = new HashSet<>();
 }

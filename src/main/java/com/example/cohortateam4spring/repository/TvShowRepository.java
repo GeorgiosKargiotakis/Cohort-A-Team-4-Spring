@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TvShowRepository extends JpaRepository<TvShow, Long> {
+
+    TvShow findBySeasons(Integer seasons);
 }

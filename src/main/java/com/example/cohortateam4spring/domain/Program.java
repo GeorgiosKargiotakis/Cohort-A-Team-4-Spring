@@ -18,7 +18,10 @@ import java.util.Set;
 @Data
 @SuperBuilder
 @NoArgsConstructor
-@MappedSuperclass
+@Entity
+@Table(name = "PROGRAMS")
+@SequenceGenerator(name = "idGenerator", sequenceName = "PROGRAMS_SEQ", initialValue = 1, allocationSize = 1)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Program extends BaseModel {
 
     @NotNull
@@ -26,8 +29,12 @@ public abstract class Program extends BaseModel {
     private String title;
 
     @Column(precision = 10, scale = 1)
-    private BigDecimal rating;
+    private double rating;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "program")
+    private Set<Activity> activities = new HashSet<>();
 
 
 }

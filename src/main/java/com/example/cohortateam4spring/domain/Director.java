@@ -21,12 +21,8 @@ import java.util.Set;
 @SequenceGenerator(name = "idGenerator", sequenceName = "DIRECTOR_SEQ", initialValue = 1, allocationSize = 1)
 public class Director extends Person{
 
-    @NotNull
-    @Column(length = 200, nullable = false)
-    private String directorDifferent;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "director")
-    private Set<Activity> activities = new HashSet<>();
 }
