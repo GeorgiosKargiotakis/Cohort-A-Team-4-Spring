@@ -1,9 +1,12 @@
 package com.example.cohortateam4spring.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -29,7 +32,8 @@ public class Person extends BaseModel {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "person")
+    @JsonIgnore
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     private Set<Activity> activities = new HashSet<>();
 
 

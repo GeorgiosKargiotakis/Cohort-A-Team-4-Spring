@@ -1,11 +1,14 @@
 package com.example.cohortateam4spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -22,7 +25,7 @@ import java.util.Set;
 @Table(name = "PROGRAMS")
 @SequenceGenerator(name = "idGenerator", sequenceName = "PROGRAMS_SEQ", initialValue = 1, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Program extends BaseModel {
+public class Program extends BaseModel {
 
     @NotNull
     @Column(length = 200, nullable = false)
@@ -33,7 +36,8 @@ public abstract class Program extends BaseModel {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "program")
+    @JsonIgnore
+    @OneToMany(mappedBy = "program", fetch = FetchType.EAGER)
     private Set<Activity> activities = new HashSet<>();
 
 

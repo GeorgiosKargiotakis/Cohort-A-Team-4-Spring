@@ -29,25 +29,11 @@ public class Activity {
     @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal budget;
 
-    public Activity(final Actor actor,
+    public Activity(final Person person,
                     final Program program,
                     final BigDecimal budget) {
-        this.person = actor;
-        this.program = program;
-        this.budget = budget;
-    }
-    public Activity(final Producer producer,
-                    final Program program,
-                    final BigDecimal budget) {
-        this.person = producer;
-        this.program = program;
-        this.budget = budget;
-    }
-
-    public Activity(final Director director,
-                    final Program program,
-                    final BigDecimal budget) {
-        this.person = director;
+        this.key = new ActivityKey(person.getId(), program.getId());
+        this.person = person;
         this.program = program;
         this.budget = budget;
     }
